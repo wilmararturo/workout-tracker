@@ -1,4 +1,5 @@
 ![](https://img.shields.io/badge/license-MIT%20License-blue)
+![](https://travis-ci.com/wilmararturo/workout-tracker.svg?branch=main)
 
 # Workout Tracker
 
