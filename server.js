@@ -1,8 +1,8 @@
 const express = require("express");
 const compression = require("compression");
-const apiRoutes = require("./routes/api-routes");
-const htmlRoutes = require("./routes/html-routes");
-
+// const logger = require("morgan");
+const mongojs = require("mongojs");
+const router = require("./routes");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
@@ -13,8 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(compression());
 
-app.use("/api", apiRoutes);
-app.use(htmlRoutes);
+app.use(router);
 
 const databaseUrl = process.env.MONGODB_URI || "mongodb://localhost/workout";
 const collections = ["workouts"];
