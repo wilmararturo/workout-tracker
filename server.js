@@ -1,7 +1,7 @@
 const express = require("express");
 const compression = require("compression");
 // const logger = require("morgan");
-const mongojs = require("mongojs");
+const mongoose = require("mongoose");
 const router = require("./routes");
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -16,12 +16,10 @@ app.use(compression());
 app.use(router);
 
 const databaseUrl = process.env.MONGODB_URI || "mongodb://localhost/workout";
-const collections = ["workouts"];
 
-const db = mongojs(databaseUrl, collections);
-
-db.on("error", (error) => {
-  console.log("Database Error:", error);
+mongoose.connect(databaseUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 app.listen(PORT, () => {
