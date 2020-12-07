@@ -9,22 +9,23 @@
 
 ---
 
-A workout tracker
+A workout tracker that allows visualizing past performance data.
 
 ## Table of Contents
 
-- [Install](#install)
 - [Usage](#usage)
 - [Tests](#tests)
 - [Questions](#questions)
 - [Contributing](#contributing)
 - [License](#license)
 
-![preview]()
+![preview](fitnessTracker.gif)
 
 ## Usage
 
 ---
+
+Navigate to [workout-tracker](https://floating-woodland-35588.herokuapp.com/). From the main page you can create a new workout, extend the current workout, or see the dashboard of past performance.
 
 ## Tests
 
