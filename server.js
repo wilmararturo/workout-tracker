@@ -22,6 +22,8 @@ const databaseUrl = process.env.MONGODB_URI || "mongodb://localhost/workout";
 mongoose.connect(databaseUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
 
 app.listen(PORT, () => {
