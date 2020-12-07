@@ -23,8 +23,8 @@ router.get("/workouts/range", (req, res) => {
     });
 });
 // get workout by id
-router.get("/workouts/:id", (req, res) => {
-  db.Workout.findById(req.params.id)
+router.get("/workouts/:id?", (req, res) => {
+  db.Workout.findById(req.query.id)
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -34,8 +34,8 @@ router.get("/workouts/:id", (req, res) => {
 });
 //create a workout
 router.post("/workouts", (req, res) => {
-  console.log(req.url);
-  db.Workout.create(res.body)
+  console.log(req.body);
+  db.Workout.create(req.body)
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -48,8 +48,10 @@ router.post("/workouts", (req, res) => {
 router.put("/workouts/:id", (req, res) => {
   console.log(req.params.id);
   console.log(req.body);
-  console.log(req.url);
-  db.Workout.updateOne({ _id: req.params.id }, req.body).then((dbWorkout) => {
+  db.Workout.updateOne(
+    { _id: req.params.id },
+    { $push: { exercises: req.body } }
+  ).then((dbWorkout) => {
     res.json(dbWorkout);
   });
 });
