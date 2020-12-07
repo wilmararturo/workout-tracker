@@ -7,6 +7,10 @@ const workoutSchema = new Schema({
     type: Date,
     default: new Date(new Date().setDate(new Date().getDate())),
   },
+  totalDuration: {
+    type: Number,
+    default: 0,
+  },
   exercises: {
     type: Array,
   },
