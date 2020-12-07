@@ -3,7 +3,10 @@ mongoose.set("useCreateIndex", true);
 const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
-  day: { type: Date, default: Date.now },
+  day: {
+    type: Date,
+    default: new Date(new Date().setDate(new Date().getDate())),
+  },
   exercises: {
     type: Array,
   },
