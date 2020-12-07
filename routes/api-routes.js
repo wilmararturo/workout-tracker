@@ -48,9 +48,10 @@ router.post("/workouts", (req, res) => {
 router.put("/workouts/:id", (req, res) => {
   console.log(req.params.id);
   console.log(req.body);
+  const addDuration = parseInt(req.body.duration);
   db.Workout.updateOne(
     { _id: req.params.id },
-    { $push: { exercises: req.body } }
+    { $push: { exercises: req.body }, $inc: { totalDuration: addDuration } }
   ).then((dbWorkout) => {
     res.json(dbWorkout);
   });
